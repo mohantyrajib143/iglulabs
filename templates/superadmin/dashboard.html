@@ -1,7 +1,8 @@
 {% extends 'superadmin/header.html' %}
 {% load static %}
-{% block title %} HOME | UNQCOLLECTION {% endblock title %}
 {% block body %}
+<link rel="stylesheet" href="{% static 'superadmin/css/line-awesome.min.css' %}">
+<link rel="stylesheet" href="{% static 'superadmin/css/morris.css' %}">
 <div class="page-wrapper">
     <div class="content container-fluid">
         <div class="page-header">
@@ -86,4 +87,11 @@
     </div>
 </div>
 {% endblock body %}
-{% block js %}{% endblock %}
+{% block js %}
+    <script data-cfasync="false" src="{% static 'superadmin/js/email-decode.min.js' %}"></script>
+    <script src="{% static 'superadmin/js/jquery.slimscroll.min.js' %}"></script>
+    <script src="{% static 'superadmin/js/morris.min.js' %}"></script>
+    <script src="{% static 'superadmin/js/raphael.min.js' %}"></script>
+    <script src="{% static 'superadmin/js/chart.js' %}"></script>
+    <script src="{% static 'superadmin/js/app.js' %}"></script>
+{% endblock %}

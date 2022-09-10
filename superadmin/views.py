@@ -7,3 +7,9 @@ def index(request):
 
 def dashboard(request):
     return render(request,'superadmin/dashboard.html')
+
+def employees_list(request):
+    return render(request,'superadmin/employees_list.html')
+
+def employees_grid(request):
+    return render(request,'superadmin/employees_grid.html')

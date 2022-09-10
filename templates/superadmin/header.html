@@ -10,10 +10,9 @@
     <meta name="robots" content="noindex, nofollow">
     <title>IgluLabs Software Pvt. Ltd.</title>
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'superadmin/favicons/iglulabs.png' %}">
+
     <link rel="stylesheet" href="{% static 'superadmin/css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'superadmin/css/font-awesome.min.css' %}">
-    <link rel="stylesheet" href="{% static 'superadmin/css/line-awesome.min.css' %}">
-    <link rel="stylesheet" href="{% static 'superadmin/css/morris-morris.css' %}">
     <link rel="stylesheet" href="{% static 'superadmin/css/style.css' %}">
 </head>
 
@@ -143,19 +142,14 @@
                         <li class="menu-title">
                             <span>Main</span>
                         </li>
-                        <li class="submenu">
-                            <a href="#"><i class="la la-dashboard"></i> <span> Dashboard</span> <span
-                                    class="menu-arrow"></span></a>
+                        <li>
+                            <a href="{% url 'dashboard' %}"><i class="la la-dashboard"></i> <span> View Dashboard</span></a>
                         </li>
                         <li class="menu-title">
                             <span>Employees</span>
                         </li>
-                        <li class="submenu">
-                            <a href="#" class="noti-dot"><i class="la la-user"></i> <span> Employees</span> <span
-                                    class="menu-arrow"></span></a>
-                            <ul style="display: none;">
-                                <li><a href="employees.html">All Employees</a></li>
-                            </ul>
+                        <li>
+                            <a href="{% url 'employees_grid' %}"><i class="la la-user"></i> <span> Manage Employees</span></a>
                         </li>
                     </ul>
                 </div>
@@ -165,15 +159,8 @@
         {% block body %}{% endblock body %}
 
     </div>
-
-    <script data-cfasync="false" src="{% static 'superadmin/js/cloudflare-static-email-decode.min.js' %}"></script>
-    <script src="{% static 'superadmin/js/js-jquery-3.6.0.min.js' %}"></script>
-    <script src="{% static 'superadmin/js/js-bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'superadmin/js/js-jquery.slimscroll.min.js' %}"></script>
-    <script src="{% static 'superadmin/js/morris-morris.min.js' %}"></script>
-    <script src="{% static 'superadmin/js/raphael-raphael.min.js' %}"></script>
-    <script src="{% static 'superadmin/js/js-chart.js' %}"></script>
-    <script src="{% static 'superadmin/js/js-app.js' %}"></script>
+    <script src="{% static 'superadmin/js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'superadmin/js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>
 {% block js %} {% endblock %}
