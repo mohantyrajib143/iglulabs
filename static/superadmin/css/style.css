@@ -2787,7 +2787,7 @@ input[type=file].form-control {
     margin-top: 20px;
   }
 }
-.submit-section .submit-btn {
+.submit-section .submit-btn .modal-cancel-btn {
   font-size: 18px;
   font-weight: 600;
   min-width: 200px;
@@ -2795,11 +2795,25 @@ input[type=file].form-control {
   padding: 10px 20px;
 }
 @media (max-width: 575px) {
-  .submit-section .submit-btn {
+  .submit-section .submit-btn .modal-cancel-btn {
     margin: 10px 0 0;
     font-size: 14px;
   }
 }
+
+/* .submit-section .modal-cancel-btn{
+  font-size: 18px;
+  font-weight: 600;
+  min-width: 200px;
+  border-radius: 50px;
+  padding: 10px 20px;
+}
+@media (max-width: 575px) {
+  .submit-section .modal-cancel-btn {
+    margin: 10px 0 0;
+    font-size: 14px;
+  }
+} */
 
 .task-follower-list {
   margin-top: 15px;
@@ -6686,6 +6700,14 @@ button.close {
 }
 
 .submit-btn {
+  font-size: 18px;
+  font-weight: 600;
+  min-width: 200px;
+  padding: 10px 20px;
+  border-radius: 50px;
+}
+
+.modal-cancel-btn {
   font-size: 18px;
   font-weight: 600;
   min-width: 200px;

@@ -5,6 +5,14 @@ from superadmin import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('dashboard/', views.dashboard, name='dashboard'),
+
+    # departments urls starts here
+    path('departments/', views.departments, name='departments'),
+    path('update_departments_status/<int:id>', views.update_departments_status, name='update_departments_status'),
+    path('update_departments/<int:id>', views.update_departments, name='update_departments'),
+    path('delete_departments/<int:id>', views.delete_departments, name='delete_departments'),
+
+    # employees urls starts here
     path('employees_list/', views.employees_list, name='employees_list'),
     path('employees_grid/', views.employees_grid, name='employees_grid'),
 ]

@@ -1,0 +1,185 @@
+{% extends 'superadmin/header.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="{% static 'superadmin/css/line-awesome.min.css' %}">
+<link rel="stylesheet" href="{% static 'superadmin/css/dataTables.bootstrap4.min.css' %}">
+<link rel="stylesheet" href="{% static 'superadmin/css/select2.min.css' %}">
+<link rel="stylesheet" href="{% static 'superadmin/css/bootstrap-datetimepicker.min.css' %}">
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">Department</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Department</li>
+                    </ul>
+                </div>
+                
+                <div class="col-auto float-end ms-auto">
+                    <a href="#" class="btn add-btn" data-bs-toggle="modal" data-bs-target="#add_department"><i class="fa fa-plus"></i> Add Department</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    <table class="table table-striped custom-table mb-0 datatable">
+                        <thead>
+                            <tr>
+                                <th style="width: 30px;">#</th>
+                                <th>Department Name</th>
+                                <th>Status</th>
+                                <th class="text-end">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for allData in allData %}
+                                <tr>
+                                    <td>{{forloop.counter}}</td>
+                                    <td>{{allData.name}}</td>
+                                    <td>
+                                        <div class="dropdown action-label">
+                                            {% if allData.status == 'active' %}
+                                                <a href="#" class="btn btn-white btn-sm btn-rounded dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-dot-circle-o text-success"></i> Active </a>
+                                            {% else %}
+                                                <a href="#" class="btn btn-white btn-sm btn-rounded dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-dot-circle-o text-danger"></i> Inactive </a>
+                                            {% endif %}
+
+                                            <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="{% url 'update_departments_status' allData.id %}"><i class="fa fa-dot-circle-o text-success"></i> Active</a>
+                                                <a class="dropdown-item" href="{% url 'update_departments_status' allData.id %}"><i class="fa fa-dot-circle-o text-danger"></i> Inactive</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="text-end">
+                                        <a data-id="{{ allData.id }}" data-name="{{ allData.name }}" data-status="{{ allData.status }}" data-bs-toggle="modal"  data-bs-target="#edit_department" class="btn btn-warning btn-sm updateDepartment"><i class="fa fa-edit"></i></a>
+
+                                        <a href="{% url 'delete_departments' allData.id %}" onClick="return confirm('Are you sure? to delete!')"><button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="add_department" class="modal custom-modal fade" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Department</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="{% url 'departments' %}" autocomplete="off" enctype="multipart/form-data">{% csrf_token %}
+                        <div class="form-group">
+                            <label>Department Name <span class="text-danger">*</span></label>
+                            <input type="text" id="name" name="name" class="form-control mt-2" placeholder="e.g. Web Development" required>
+
+                            <input type="hidden" id="status" name="status" value="active">
+                        </div>
+                        <div class="submit-section m-t-10">
+                            <button type="button" data-bs-dismiss="modal" class="btn btn-danger modal-cancel-btn">Cancel</button>
+                            <button type="submit" class="btn btn-primary submit-btn">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="edit_department" class="modal custom-modal fade" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Department</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="updateForm" method="post" autocomplete="off" enctype="multipart/form-data">{% csrf_token %}
+                        <div class="form-group">
+                            <label>Department Name <span class="text-danger">*</span></label>
+                            <input type="text" id="updateName" name="name" class="form-control mt-2" placeholder="e.g. Web Development" required>
+                            <input type="hidden" id="updateStatus" name="status">
+                        </div>
+                        <div class="submit-section m-t-10">
+                            <button type="button" data-bs-dismiss="modal" class="btn btn-danger modal-cancel-btn">Cancel</button>
+                            <button type="submit" class="btn btn-primary submit-btn">Update</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="myDivAlertSuccess">
+    <div style="background-color: #1c7c50; color:white;" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Success!</strong> <span id="smsg"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        </button>
+    </div>
+</div>
+
+<div id="myDivAlertError">
+    <div style="background-color: #ed1b2e; color:white;" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Error!</strong> <span id="emsg"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        </button>
+    </div>
+</div>
+
+{% endblock body %}
+{% block js %}
+    <script src="{% static 'superadmin/js/jquery.slimscroll.min.js' %}"></script>
+    <script src="{% static 'superadmin/js/select2.min.js' %}"></script>
+    <script src="{% static 'superadmin/js/moment.min.js' %}"></script>
+    <script src="{% static 'superadmin/js/bootstrap-datetimepicker.min.js' %}"></script>
+    <script src="{% static 'superadmin/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'superadmin/js/dataTables.bootstrap4.min.js' %}"></script>
+    <script src="{% static 'superadmin/js/app.js' %}"></script>
+
+    <script>
+        $( ".updateDepartment" ).click(function() {
+            $.id = $(this).data('id');
+            var name = $(this).data('name');
+            var status = $(this).data('status');
+
+            $("#updateName").val(name);
+            $("#updateStatus").val(status);
+            $('#updateForm').attr('action', "/update_departments/"+ $.id);
+        });
+    </script>
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'success' %} 
+                <script>
+                    var msg= "{{message}}";
+                    var x = document.getElementById("myDivAlertSuccess");
+                    $('#smsg').html(msg);
+                    x.className = "show";
+                    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+                </script>
+            {% endif %}
+            {% if message.tags == 'error' %} 
+                <script>
+                    var msg= "{{message}}";
+                    var x = document.getElementById("myDivAlertError");
+                    $('#emsg').html(msg);
+                    x.className = "show";
+                    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+                </script>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endblock %}
