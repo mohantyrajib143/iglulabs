@@ -14,6 +14,13 @@ class tbl_designations(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+class tbl_holidays(models.Model):
+    title = models.CharField(max_length=100)
+    date = models.DateField()
+    status = models.CharField(max_length=200)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
 
 
 

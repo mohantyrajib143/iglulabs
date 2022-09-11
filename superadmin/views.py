@@ -1,8 +1,9 @@
+from turtle import title
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from superadmin.models import tbl_departments, tbl_designations
+from superadmin.models import tbl_departments, tbl_designations, tbl_holidays
 from django.contrib import messages
-from . forms import DepartmentsForm, DesignationsForm
+from . forms import DepartmentsForm, DesignationsForm, HolidaysForm
 
 # Create your views here.
 def index(request):
@@ -107,6 +108,55 @@ def delete_designation(request, id):
     data.delete()
     messages.success(request, 'Designation deleted successfully!')
     return redirect('designations')
+
+# holidays views starts here
+def holidays(request):
+    if request.method=='POST':
+        title = request.POST['title']
+        date = request.POST['date']
+        status = request.POST['status']
+
+        if tbl_holidays.objects.filter(date=date).exists():
+            messages.error(request, 'Designation already exist!!')
+        else:
+            data = tbl_holidays(title=title, date=date, status=status)
+            data.save()
+            messages.success(request, 'Holiday saved successfully!')
+        return redirect('holidays')
+    else:
+        allData = tbl_holidays.objects.all().order_by('-id')
+        data = {'allData':allData}
+        return render(request, 'superadmin/holidays.html', data)
+
+def update_holidays_status(request, id):
+    query = tbl_holidays.objects.get(id=id)
+    if(query.status == 'active'):
+        query.status = 'inactive'
+    else:
+        query.status = 'active'
+    query.save()
+    messages.success(request, 'Status updated successfully!')
+    return redirect('holidays')
+
+def update_holidays(request, id):
+    update = tbl_holidays.objects.get(id=id)
+    title = request.POST['title']
+    date = request.POST['date']
+    if tbl_holidays.objects.filter(title=title, date=date).exists():
+        messages.error(request, 'Holiday already exist!!')
+    else:
+        query = HolidaysForm(request.POST, instance=update)
+        query.save()
+        if query.is_valid():
+            query.save(commit=True)
+            messages.success(request, 'Holidays updated successfully!')
+    return redirect('holidays')
+
+def delete_holidays(request, id):
+    data = tbl_holidays.objects.get(id=id)
+    data.delete()
+    messages.success(request, 'Holiday deleted successfully!')
+    return redirect('holidays')
 
 # employees views starts here
 def employees_list(request):
