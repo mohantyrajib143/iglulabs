@@ -6,3 +6,24 @@ class tbl_departments(models.Model):
     status = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+class tbl_designations(models.Model):
+    name = models.CharField(max_length=100)
+    departments = models.CharField(max_length=100)
+    status = models.CharField(max_length=200)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
