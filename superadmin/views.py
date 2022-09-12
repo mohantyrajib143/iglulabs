@@ -1,9 +1,9 @@
 from turtle import title
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from superadmin.models import tbl_departments, tbl_designations, tbl_holidays
+from superadmin.models import tbl_departments, tbl_designations, tbl_holidays, tbl_assets
 from django.contrib import messages
-from . forms import DepartmentsForm, DesignationsForm, HolidaysForm
+from . forms import DepartmentsForm, DesignationsForm, HolidaysForm, AssetsForm
 
 # Create your views here.
 def index(request):
@@ -157,6 +157,54 @@ def delete_holidays(request, id):
     data.delete()
     messages.success(request, 'Holiday deleted successfully!')
     return redirect('holidays')
+
+# holidays views starts here
+def assets(request):
+    if request.method=='POST':
+        emp_id = request.POST['emp_id']
+        assets_name = request.POST['assets_name']
+        assets_id = request.POST['assets_id']
+        mouse_id = request.POST['mouse_id']
+        keyboard_id = request.POST['keyboard_id']
+        assets_info = request.POST['assets_info']
+        status = request.POST['status']
+
+        if tbl_assets.objects.filter(emp_id=emp_id).exists():
+            messages.error(request, 'Employee ID already exist!!')
+        else:
+            data = tbl_assets(emp_id=emp_id, assets_name=assets_name, assets_id=assets_id, mouse_id=mouse_id, keyboard_id=keyboard_id, assets_info=assets_info, status=status)
+            data.save()
+            messages.success(request, 'Assets saved successfully!')
+        return redirect('assets')
+    else:
+        allData = tbl_assets.objects.all().order_by('-id')
+        data = {'allData':allData}
+        return render(request, 'superadmin/assets.html', data)
+
+def update_assets_status(request, id):
+    query = tbl_assets.objects.get(id=id)
+    if(query.status == 'active'):
+        query.status = 'inactive'
+    else:
+        query.status = 'active'
+    query.save()
+    messages.success(request, 'Status updated successfully!')
+    return redirect('assets')
+
+def update_assets(request, id):
+    update = tbl_assets.objects.get(id=id)
+    query = AssetsForm(request.POST, instance=update)
+    query.save()
+    if query.is_valid():
+        query.save(commit=True)
+        messages.success(request, 'Assets updated successfully!')
+    return redirect('assets')
+
+def delete_assets(request, id):
+    data = tbl_assets.objects.get(id=id)
+    data.delete()
+    messages.success(request, 'Assets deleted successfully!')
+    return redirect('assets')
 
 # employees views starts here
 def employees_list(request):

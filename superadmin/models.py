@@ -21,6 +21,17 @@ class tbl_holidays(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+class tbl_assets(models.Model):
+    emp_id = models.CharField(max_length=100)
+    assets_name = models.CharField(max_length=100)
+    assets_id = models.CharField(max_length=100)
+    mouse_id = models.CharField(max_length=100)
+    keyboard_id = models.CharField(max_length=100)
+    assets_info = models.CharField(max_length=500)
+    status = models.CharField(max_length=200)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
 
 
 

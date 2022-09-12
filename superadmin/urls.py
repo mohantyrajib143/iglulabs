@@ -24,6 +24,12 @@ urlpatterns = [
     path('update_holidays/<int:id>', views.update_holidays, name='update_holidays'),
     path('delete_holidays/<int:id>', views.delete_holidays, name='delete_holidays'),
 
+    # assets urls starts here
+    path('assets/', views.assets, name='assets'),
+    path('update_assets_status/<int:id>', views.update_assets_status, name='update_assets_status'),
+    path('update_assets/<int:id>', views.update_assets, name='update_assets'),
+    path('delete_assets/<int:id>', views.delete_assets, name='delete_assets'),
+
     # employees urls starts here
     path('employees_list/', views.employees_list, name='employees_list'),
     path('employees_grid/', views.employees_grid, name='employees_grid'),
