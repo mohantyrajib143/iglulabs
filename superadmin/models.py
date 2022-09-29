@@ -34,6 +34,26 @@ class tbl_assets(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+class tbl_employee(models.Model):
+    emp_id = models.CharField(max_length=100)
+    team = models.CharField(max_length=100)
+    designation = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
+    email = models.CharField(max_length=100)
+    mobile = models.IntegerField()
+    aadhaar_no = models.IntegerField()
+    gender = models.CharField(max_length=100)
+    dob = models.DateField()
+    doj = models.DateField()
+    current_address = models.CharField(max_length=200)
+    permanent_address = models.CharField(max_length=200)
+    nationality = models.CharField(max_length=100)
+    religion = models.CharField(max_length=100)
+    martial_status = models.CharField(max_length=100)
+    image = models.ImageField(upload_to="employee")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
 class tbl_emp_family(models.Model):
     emp_id = models.CharField(max_length=100)
     name = models.CharField(max_length=100)
