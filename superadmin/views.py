@@ -1,7 +1,7 @@
 from turtle import title
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from superadmin.models import tbl_departments, tbl_designations, tbl_holidays, tbl_assets
+from superadmin.models import tbl_departments, tbl_designations, tbl_holidays, tbl_assets, tbl_emp_family
 from django.contrib import messages
 from . forms import DepartmentsForm, DesignationsForm, HolidaysForm, AssetsForm
 
@@ -212,3 +212,28 @@ def employees_list(request):
 
 def employees_grid(request):
     return render(request,'superadmin/employees_grid.html')
+
+def employees_profile(request):
+    EmpFamilyData = tbl_emp_family.objects.all().order_by('-id')
+    data = {'EmpFamilyData':EmpFamilyData}
+    return render(request,'superadmin/employees_profile.html', data)
+
+def add_family_info(request):
+    if request.method=='POST':
+        emp_id = request.POST['emp_id']
+        name = request.POST['name']
+        relationship = request.POST['relationship']
+        email = request.POST['email']
+        mobile = request.POST['mobile']
+        status = request.POST['status']
+
+        data = tbl_emp_family(emp_id=emp_id, name=name, relationship=relationship, email=email, mobile=mobile, status=status)
+        data.save()
+        messages.success(request, 'Family member saved successfully!')
+        return redirect('employees_profile')
+
+def delete_emp_family_data(request, id):
+    data = tbl_emp_family.objects.get(id=id)
+    data.delete()
+    messages.success(request, 'Family member deleted successfully!')
+    return redirect('employees_profile')

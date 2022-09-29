@@ -1,5 +1,7 @@
 from django.db import models
 
+# from superadmin.views import designations
+
 # Create your models here.
 class tbl_departments(models.Model):
     name = models.CharField(max_length=100)
@@ -28,6 +30,16 @@ class tbl_assets(models.Model):
     mouse_id = models.CharField(max_length=100)
     keyboard_id = models.CharField(max_length=100)
     assets_info = models.CharField(max_length=500)
+    status = models.CharField(max_length=200)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+class tbl_emp_family(models.Model):
+    emp_id = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
+    relationship = models.CharField(max_length=100)
+    email = models.CharField(max_length=100)
+    mobile = models.CharField(max_length=100)
     status = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
