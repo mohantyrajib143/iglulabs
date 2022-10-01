@@ -49,8 +49,9 @@ class tbl_employee(models.Model):
     permanent_address = models.CharField(max_length=200)
     nationality = models.CharField(max_length=100)
     religion = models.CharField(max_length=100)
-    martial_status = models.CharField(max_length=100)
+    marital_status = models.CharField(max_length=100)
     image = models.ImageField(upload_to="employee")
+    status = models.CharField(max_length=100, default="active")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

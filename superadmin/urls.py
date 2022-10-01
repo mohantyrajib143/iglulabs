@@ -32,6 +32,7 @@ urlpatterns = [
 
     # employees urls starts here
     path('employees_list/', views.employees_list, name='employees_list'),
+    
     path('employees_grid/', views.employees_grid, name='employees_grid'),
     path('employees_profile/', views.employees_profile, name='employees_profile'),
     path('add_family_info/', views.add_family_info, name='add_family_info'),

@@ -41,311 +41,48 @@
                                 <th>Mobile</th>
                                 <th class="text-nowrap">Join Date</th>
                                 <th>Role</th>
+                                <th>Designation</th>
                                 <th class="text-end no-sort">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    <h2 class="table-avatar">
-                                        <a href="profile" class="avatar"><img alt=""
-                                                src="https://smarthr-ci.dreamguystech.com/template/blue/public/assets/img/profiles/avatar-02.jpg"></a>
-                                        <a href="profile">John Doe <span>Web Designer</span></a>
-                                    </h2>
-                                </td>
-                                <td>FT-0001</td>
-                                <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                                        data-cfemail="513b3e393f353e34113429303c213d347f323e3c">[email&#160;protected]</a>
-                                </td>
-                                <td>9876543210</td>
-                                <td>1 Jan 2013</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <a href="" class="btn btn-white btn-sm btn-rounded dropdown-toggle"
-                                            data-bs-toggle="dropdown" aria-expanded="false">Web Developer </a>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">Software Engineer</a>
-                                            <a class="dropdown-item" href="#">Software Tester</a>
-                                            <a class="dropdown-item" href="#">Frontend Developer</a>
-                                            <a class="dropdown-item" href="#">UI/UX Developer</a>
+                            {% for empData in empData %}
+                                <tr>
+                                    <td>
+                                        <h2 class="table-avatar">
+                                            <a href="profile" class="avatar"><img alt="" src="/media/{{empData.image}}"></a>
+                                            <a href="profile">{{empData.name}}</a>
+                                        </h2>
+                                    </td>
+                                    <td>{{empData.emp_id}}</td>
+                                    <td>{{empData.email}}</td>
+                                    <td>{{empData.mobile}}</td>
+                                    <td>{{empData.doj}}</td>
+                                    <td>{{empData.team}}</td>
+                                    <td>{{empData.designation}}</td>
+                                    <td class="text-end">
+                                        <div class="dropdown dropdown-action">
+                                            <a href="#" class="action-icon dropdown-toggle"
+                                                data-bs-toggle="dropdown" aria-expanded="false"><i
+                                                    class="material-icons">more_vert</i></a>
+                                            <div class="dropdown-menu dropdown-menu-right">
+                                                <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                                    data-bs-target="#edit_employee"><i
+                                                        class="fa fa-pencil m-r-5"></i> Edit</a>
+                                                <a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                                    data-bs-target="#delete_employee"><i
+                                                        class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td class="text-end">
-                                    <div class="dropdown dropdown-action">
-                                        <a href="#" class="action-icon dropdown-toggle"
-                                            data-bs-toggle="dropdown" aria-expanded="false"><i
-                                                class="material-icons">more_vert</i></a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                data-bs-target="#edit_employee"><i
-                                                    class="fa fa-pencil m-r-5"></i> Edit</a>
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                data-bs-target="#delete_employee"><i
-                                                    class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h2 class="table-avatar">
-                                        <a href="profile" class="avatar"><img alt=""
-                                                src="https://smarthr-ci.dreamguystech.com/template/blue/public/assets/img/profiles/avatar-09.jpg"></a>
-                                        <a href="profile">Richard Miles <span>Web Developer</span></a>
-                                    </h2>
-                                </td>
-                                <td>FT-0002</td>
-                                <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                                        data-cfemail="691b000a01081b0d0400050c1a290c11080419050c470a0604">[email&#160;protected]</a>
-                                </td>
-                                <td>9876543210</td>
-                                <td>18 Mar 2014</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <a href="" class="btn btn-white btn-sm btn-rounded dropdown-toggle"
-                                            data-bs-toggle="dropdown" aria-expanded="false">Web Developer </a>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">Software Engineer</a>
-                                            <a class="dropdown-item" href="#">Software Tester</a>
-                                            <a class="dropdown-item" href="#">Frontend Developer</a>
-                                            <a class="dropdown-item" href="#">UI/UX Developer</a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="text-end">
-                                    <div class="dropdown dropdown-action">
-                                        <a href="#" class="action-icon dropdown-toggle"
-                                            data-bs-toggle="dropdown" aria-expanded="false"><i
-                                                class="material-icons">more_vert</i></a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                data-bs-target="#edit_employee"><i
-                                                    class="fa fa-pencil m-r-5"></i> Edit</a>
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                data-bs-target="#delete_employee"><i
-                                                    class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h2 class="table-avatar">
-                                        <a href="profile" class="avatar"><img alt=""
-                                                src="https://smarthr-ci.dreamguystech.com/template/blue/public/assets/img/profiles/avatar-10.jpg"></a>
-                                        <a href="profile">John Smith <span>Android Developer</span></a>
-                                    </h2>
-                                </td>
-                                <td>FT-0003</td>
-                                <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                                        data-cfemail="4a202522243927233e220a2f322b273a262f64292527">[email&#160;protected]</a>
-                                </td>
-                                <td>9876543210</td>
-                                <td>1 Apr 2014</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <a href="" class="btn btn-white btn-sm btn-rounded dropdown-toggle"
-                                            data-bs-toggle="dropdown" aria-expanded="false">Web Developer </a>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">Software Engineer</a>
-                                            <a class="dropdown-item" href="#">Software Tester</a>
-                                            <a class="dropdown-item" href="#">Frontend Developer</a>
-                                            <a class="dropdown-item" href="#">UI/UX Developer</a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="text-end">
-                                    <div class="dropdown dropdown-action">
-                                        <a href="#" class="action-icon dropdown-toggle"
-                                            data-bs-toggle="dropdown" aria-expanded="false"><i
-                                                class="material-icons">more_vert</i></a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                data-bs-target="#edit_employee"><i
-                                                    class="fa fa-pencil m-r-5"></i> Edit</a>
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                data-bs-target="#delete_employee"><i
-                                                    class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h2 class="table-avatar">
-                                        <a href="profile" class="avatar"><img alt=""
-                                                src="https://smarthr-ci.dreamguystech.com/template/blue/public/assets/img/profiles/avatar-05.jpg"></a>
-                                        <a href="profile">Mike Litorus <span>IOS Developer</span></a>
-                                    </h2>
-                                </td>
-                                <td>FT-0004</td>
-                                <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                                        data-cfemail="294440424c45405d465b5c5a694c51484459454c074a4644">[email&#160;protected]</a>
-                                </td>
-                                <td>9876543210</td>
-                                <td>1 Apr 2014</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <a href="" class="btn btn-white btn-sm btn-rounded dropdown-toggle"
-                                            data-bs-toggle="dropdown" aria-expanded="false">Web Developer </a>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">Software Engineer</a>
-                                            <a class="dropdown-item" href="#">Software Tester</a>
-                                            <a class="dropdown-item" href="#">Frontend Developer</a>
-                                            <a class="dropdown-item" href="#">UI/UX Developer</a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="text-end">
-                                    <div class="dropdown dropdown-action">
-                                        <a href="#" class="action-icon dropdown-toggle"
-                                            data-bs-toggle="dropdown" aria-expanded="false"><i
-                                                class="material-icons">more_vert</i></a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                data-bs-target="#edit_employee"><i
-                                                    class="fa fa-pencil m-r-5"></i> Edit</a>
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                data-bs-target="#delete_employee"><i
-                                                    class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h2 class="table-avatar">
-                                        <a href="profile" class="avatar"><img alt=""
-                                                src="https://smarthr-ci.dreamguystech.com/template/blue/public/assets/img/profiles/avatar-11.jpg"></a>
-                                        <a href="profile">Wilmer Deluna <span>Team Leader</span></a>
-                                    </h2>
-                                </td>
-                                <td>FT-0005</td>
-                                <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                                        data-cfemail="66110f0a0b031402030a13080726031e070b160a034805090b">[email&#160;protected]</a>
-                                </td>
-                                <td>9876543210</td>
-                                <td>22 May 2014</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <a href="" class="btn btn-white btn-sm btn-rounded dropdown-toggle"
-                                            data-bs-toggle="dropdown" aria-expanded="false">Web Developer </a>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">Software Engineer</a>
-                                            <a class="dropdown-item" href="#">Software Tester</a>
-                                            <a class="dropdown-item" href="#">Frontend Developer</a>
-                                            <a class="dropdown-item" href="#">UI/UX Developer</a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="text-end">
-                                    <div class="dropdown dropdown-action">
-                                        <a href="#" class="action-icon dropdown-toggle"
-                                            data-bs-toggle="dropdown" aria-expanded="false"><i
-                                                class="material-icons">more_vert</i></a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                data-bs-target="#edit_employee"><i
-                                                    class="fa fa-pencil m-r-5"></i> Edit</a>
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                data-bs-target="#delete_employee"><i
-                                                    class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h2 class="table-avatar">
-                                        <a href="profile" class="avatar"><img alt=""
-                                                src="https://smarthr-ci.dreamguystech.com/template/blue/public/assets/img/profiles/avatar-12.jpg"></a>
-                                        <a href="profile">Jeffrey Warden <span>Web Developer</span></a>
-                                    </h2>
-                                </td>
-                                <td>FT-0006</td>
-                                <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                                        data-cfemail="6f050a09091d0a16180e1d0b0a012f0a170e021f030a410c0002">[email&#160;protected]</a>
-                                </td>
-                                <td>9876543210</td>
-                                <td>16 Jun 2013</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <a href="" class="btn btn-white btn-sm btn-rounded dropdown-toggle"
-                                            data-bs-toggle="dropdown" aria-expanded="false">Web Developer </a>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">Software Engineer</a>
-                                            <a class="dropdown-item" href="#">Software Tester</a>
-                                            <a class="dropdown-item" href="#">Frontend Developer</a>
-                                            <a class="dropdown-item" href="#">UI/UX Developer</a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="text-end">
-                                    <div class="dropdown dropdown-action">
-                                        <a href="#" class="action-icon dropdown-toggle"
-                                            data-bs-toggle="dropdown" aria-expanded="false"><i
-                                                class="material-icons">more_vert</i></a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                data-bs-target="#edit_employee"><i
-                                                    class="fa fa-pencil m-r-5"></i> Edit</a>
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                data-bs-target="#delete_employee"><i
-                                                    class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h2 class="table-avatar">
-                                        <a href="profile" class="avatar"><img alt=""
-                                                src="https://smarthr-ci.dreamguystech.com/template/blue/public/assets/img/profiles/avatar-13.jpg"></a>
-                                        <a href="profile">Bernardo Galaviz <span>Web Developer</span></a>
-                                    </h2>
-                                </td>
-                                <td>FT-0007</td>
-                                <td><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-                                        data-cfemail="a9cbccdbc7c8dbcdc6cec8c5c8dfc0d3e9ccd1c8c4d9c5cc87cac6c4">[email&#160;protected]</a>
-                                </td>
-                                <td>9876543210</td>
-                                <td>1 Jan 2013</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <a href="" class="btn btn-white btn-sm btn-rounded dropdown-toggle"
-                                            data-bs-toggle="dropdown" aria-expanded="false">Web Developer </a>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="#">Software Engineer</a>
-                                            <a class="dropdown-item" href="#">Software Tester</a>
-                                            <a class="dropdown-item" href="#">Frontend Developer</a>
-                                            <a class="dropdown-item" href="#">UI/UX Developer</a>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="text-end">
-                                    <div class="dropdown dropdown-action">
-                                        <a href="#" class="action-icon dropdown-toggle"
-                                            data-bs-toggle="dropdown" aria-expanded="false"><i
-                                                class="material-icons">more_vert</i></a>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                data-bs-target="#edit_employee"><i
-                                                    class="fa fa-pencil m-r-5"></i> Edit</a>
-                                            <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                                                data-bs-target="#delete_employee"><i
-                                                    class="fa fa-trash-o m-r-5"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
-
 
     <div id="add_employee" class="modal custom-modal fade" role="dialog">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -357,7 +94,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="post">
+                    <form method="post" action="{% url 'employees_list' %}" autocomplete="off" enctype="multipart/form-data">{% csrf_token %}
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
@@ -395,16 +132,12 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <div class="cal-icon">
-                                        <input type="text" id="dob" name="dob" placeholder="Enter date of birth" class="form-control datetimepicker" required>
-                                    </div>
+                                    <input type="date" id="dob" name="dob" placeholder="Enter date of birth" class="form-control" required>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <div class="cal-icon">
-                                        <input type="text" id="doj" name="doj" placeholder="Enter date of joining" class="form-control datetimepicker" required>
-                                    </div>
+                                    <input type="date" id="doj" name="doj" placeholder="Enter date of joining" class="form-control" required>
                                 </div>
                             </div>
                             <div class="col-sm-6">
@@ -429,8 +162,8 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <select id="maritial_status" name="maritial_status" class="form-control" required>
-                                        <option value="">Maritial Status</option>
+                                    <select id="marital_status" name="marital_status" class="form-control" required>
+                                        <option value="">Marital Status</option>
                                         <option value="Married">Married</option>
                                         <option value="Un Married">Un Married</option>
                                     </select>
@@ -460,16 +193,17 @@
                                     </select>
                                 </div>
                             </div>
+                            <input type="hidden" name="status" id="status" value="active">
                         </div>
                         <div class="submit-section">
-                            <button class="btn btn-primary submit-btn">Submit</button>
+                            <button type="button" data-bs-dismiss="modal" class="btn btn-danger modal-cancel-btn">Cancel</button>
+                            <button type="submit" class="btn btn-primary submit-btn">Submit</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
 
     <div id="edit_employee" class="modal custom-modal fade" role="dialog">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -795,6 +529,23 @@
         </div>
     </div>
 </div>
+
+<div id="myDivAlertSuccess">
+    <div style="background-color: #1c7c50; color:white;" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Success!</strong> <span id="smsg"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        </button>
+    </div>
+</div>
+
+<div id="myDivAlertError">
+    <div style="background-color: #ed1b2e; color:white;" class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Error!</strong> <span id="emsg"></span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+        </button>
+    </div>
+</div>
+
 {% endblock body %}
 {% block js %}
     <script src="{% static 'superadmin/js/jquery.slimscroll.min.js' %}"></script>
@@ -804,4 +555,26 @@
     <script src="{% static 'superadmin/js/jquery.dataTables.min.js' %}"></script>
     <script src="{% static 'superadmin/js/dataTables.bootstrap4.min.js' %}"></script>
     <script src="{% static 'superadmin/js/app.js' %}"></script>
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'success' %} 
+                <script>
+                    var msg= "{{message}}";
+                    var x = document.getElementById("myDivAlertSuccess");
+                    $('#smsg').html(msg);
+                    x.className = "show";
+                    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+                </script>
+            {% endif %}
+            {% if message.tags == 'error' %} 
+                <script>
+                    var msg= "{{message}}";
+                    var x = document.getElementById("myDivAlertError");
+                    $('#emsg').html(msg);
+                    x.className = "show";
+                    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+                </script>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
 {% endblock %}

@@ -1,7 +1,7 @@
 from turtle import title
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from superadmin.models import tbl_departments, tbl_designations, tbl_holidays, tbl_assets, tbl_emp_family
+from superadmin.models import tbl_departments, tbl_designations, tbl_holidays, tbl_assets, tbl_employee, tbl_emp_family
 from django.contrib import messages
 from . forms import DepartmentsForm, DesignationsForm, HolidaysForm, AssetsForm
 
@@ -208,7 +208,33 @@ def delete_assets(request, id):
 
 # employees views starts here
 def employees_list(request):
-    return render(request,'superadmin/employees_list.html')
+    if request.method=='POST':
+        emp_id = request.POST['emp_id']
+        team = request.POST['team']
+        designation = request.POST['designation']
+        name = request.POST['name']
+        email = request.POST['email']
+        mobile = request.POST['mobile']
+        aadhaar_no = request.POST['aadhaar_no']
+        gender = request.POST['gender']
+        dob = request.POST['dob']
+        doj = request.POST['doj']
+        current_address = request.POST['current_address']
+        permanent_address = request.POST['permanent_address']
+        nationality = request.POST['nationality']
+        religion = request.POST['religion']
+        marital_status = request.POST['marital_status']
+        image = request.FILES['image']
+        status = request.POST['status']
+
+        data = tbl_employee(emp_id=emp_id, team=team, designation=designation, name=name, email=email, mobile=mobile, aadhaar_no=aadhaar_no, gender=gender, dob=dob, doj=doj, current_address=current_address, permanent_address=permanent_address, nationality=nationality, religion=religion, marital_status=marital_status, image=image, status=status)
+        data.save()
+        messages.success(request, 'Data Successfully Saved!!')
+        return redirect('employees_list')
+    else:
+        empData = tbl_employee.objects.all().order_by('-id')
+        data = {'empData':empData}
+        return render(request, 'superadmin/employees_list.html', data)
 
 def employees_grid(request):
     return render(request,'superadmin/employees_grid.html')
