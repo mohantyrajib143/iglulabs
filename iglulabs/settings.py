@@ -74,8 +74,12 @@ WSGI_APPLICATION = 'iglulabs.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'iglulabs',
+        'HOST': 'localhost',
+        'USER': 'admin',
+        'PASSWORD': 'admin',
+        'PORT': '3306',
     }
 }
 
