@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def mylogin(request):
@@ -29,6 +30,11 @@ def mylogin(request):
             else:
                 messages.error(request, 'Email or password is not correct!')
     return render(request, 'superadmin/login.html')
+
+@login_required(login_url='mylogin')
+def mylogout(request):
+    logout(request)
+    return redirect('mylogin')
 
 def dashboard(request):
     return render(request, 'superadmin/dashboard.html')
