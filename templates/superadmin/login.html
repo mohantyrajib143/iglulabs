@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Bootstrap Example</title>
+        <title>Login</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -24,8 +24,6 @@
         a{
             color: #31285C;
         }
-
-
 
         body{
             width: 100%;
@@ -143,6 +141,14 @@
         .submit-button:hover {
             cursor: pointer; /* Set cursor to hand pointer on hover */
         }
+
+        .alert-danger{
+            color:red;
+        }
+
+        .alert-success{
+            color:green;
+        }
     </style>
 <body>
     <div class="wrapper">
@@ -151,7 +157,7 @@
             <p>Sign In to your account</p>
         </div>
         
-        <form autocomplete="off" method="post" action="" enctype='multipart/form-data'>{% csrf_token %}
+        <form autocomplete="off" method="post" action="{% url 'mylogin' %}" enctype='multipart/form-data'>{% csrf_token %}
             <div class="input-group">
                 <input type="email" id="email" name="email" class="input-field" placeholder="Email" required>
             </div>
@@ -177,6 +183,40 @@
             </div>
         </form>
     </div>
-    <footer>Created With ❤️ by <a href="https://instagram.com/_bh.oopendra" target="_black">Bhoopendra</a></footer>        
+    <footer>
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == 'error' %}
+                    <div id="ErrorMsg" class="alert alert-danger">
+                        <strong> Error!</strong> {{message}}.
+                    </div>
+                {% endif %}
+                {% if message.tags == 'success' %}
+                    <div class="alert alert-success">
+                        <strong> Success!</strong> {{message}}.
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </footer>     
+    
+    {% if messages %}
+        {% for message in messages %}
+            {% if message.tags == 'success' %} 
+                <script>
+                    window.setTimeout( function(){
+                        window.location = "dashboard/";
+                    }, 1500 );
+                </script>
+            {% endif %}
+            {% if message.tags == 'error' %} 
+                <script>
+                    window.setTimeout( function(){
+                        $('#ErrorMsg').hide();
+                    }, 3000 );
+                </script>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
 </body>
 </html>
